@@ -4,9 +4,8 @@ const path = require('path');
 function _runWasm(reqBody) {
   return new Promise(resolve => {
     const wasmedge = spawn(
-      path.join(__dirname, 'wasmedge-tensorflow-lite'),
-      [path.join(__dirname, 'classify.so')],
-      {env: {'LD_LIBRARY_PATH': __dirname}}
+      path.join(__dirname, 'wasmedge'),
+      ['--dir', '.:.', path.join(__dirname, 'wasmedge-mobilenet_v2.wasm'), path.join(__dirname, 'mobilenet.pt')],
     );
 
     let d = [];
