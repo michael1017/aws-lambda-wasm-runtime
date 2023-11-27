@@ -81,6 +81,7 @@ export default function Home() {
           setLoading(false);
           setRes(oReq.response);
       };
+      console.log(`${e.target.result}`);
       console.log(`${buf2hex(e.target.result)}`);
       oReq.send(buf2hex(e.target.result));
     };
