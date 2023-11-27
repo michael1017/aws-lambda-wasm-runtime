@@ -9,6 +9,7 @@ import sys
 import json
 
 def solve(input_string):
+    input_string = input_string[2:]
     print(input_string)
     # Load the model
     model_path = 'mobilenet_v1_1.0_224_quant.tflite'

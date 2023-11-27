@@ -5,6 +5,7 @@ FROM public.ecr.aws/lambda/python:3.8
 COPY requirements.txt ./
 
 # Install the python requirements from requirements.txt
+RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install -r requirements.txt
 # Replace Pillow with Pillow-SIMD to take advantage of AVX2
 
@@ -13,4 +14,4 @@ COPY hello.py ./
 COPY labels_mobilenet_quant_v1_224.txt ./
 COPY mobilenet_v1_1.0_224_quant.tflite ./
 
-CMD [ "hello.handler" ]
+CMD [ "hello.lambda_handler" ]
