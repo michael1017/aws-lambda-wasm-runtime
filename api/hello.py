@@ -9,7 +9,7 @@ import sys
 import json
 
 def solve(input_string):
-    input_string = input_string[2:]
+    input_string = input_string[1:-1]
     print(input_string)
     # Load the model
     model_path = 'mobilenet_v1_1.0_224_quant.tflite'
@@ -69,7 +69,7 @@ def solve(input_string):
 
 def lambda_handler(event, context):
     # TODO implement
-    temp = str(json.dumps(event))
+    temp = str(json.dumps(event['body'])).strip()
     print(temp)
     return {
         'statusCode': 200,
