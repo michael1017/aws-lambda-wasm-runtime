@@ -1,6 +1,7 @@
 # Pull the base image with python 3.8 as a runtime for your Lambda
 FROM public.ecr.aws/lambda/python:3.8
 
+
 # Copy the earlier created requirements.txt file to the container
 COPY requirements.txt ./
 
