@@ -10,7 +10,6 @@ import json
 
 def solve(input_string):
     input_string = input_string[1:-1]
-    print(input_string[:10])
     # Load the model
     model_path = 'mobilenet_v1_1.0_224_quant.tflite'
     interpreter = tf.lite.Interpreter(model_path=model_path)
@@ -24,15 +23,11 @@ def solve(input_string):
     # Read Image from input
     image_bytes = bytes.fromhex(input_string)
     img = Image.open(io.BytesIO(image_bytes))
-    print('img')
-    print(img)
 
     # Preprocess the image
     img = img.resize((224, 224))
     img = img.convert('RGB')
     img_array = np.array(img)
-    print("img_array")
-    print(img_array)
 
     # Prepare input tensor
     input_tensor = np.expand_dims(img_array, axis=0).astype(np.uint8)
@@ -51,8 +46,6 @@ def solve(input_string):
     # Process output tensor
     max_index = np.argmax(output_tensor)
     max_value = np.max(output_tensor)
-    print("max_value")
-    print(max_value)
 
     # Determine confidence
     confidence = "could be"
@@ -65,8 +58,6 @@ def solve(input_string):
 
     # Get class name
     class_name = labels[max_index]
-    print("class_name")
-    print(class_name)
 
     # Display result
     if max_value > 0.196:  # Adjust threshold as needed
@@ -77,7 +68,6 @@ def solve(input_string):
 def lambda_handler(event, context):
     # TODO implement
     temp = str(json.dumps(event['body'])).strip()
-    print(temp)
     return {
         'statusCode': 200,
         'headers': {
