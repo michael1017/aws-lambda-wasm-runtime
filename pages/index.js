@@ -17,7 +17,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://github.com/WasmEdge/WasmEdge">WasmEdge!</a>
+          Welcome to AWS Lambda <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html">Python!</a>
         </h1>
 
         <div className={styles.operating}>
